@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34B84E40D987AEAC9DF0DD26 /* libPods-findmine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FCC1FEE561A36A0C76BCCB /* libPods-findmine.a */; };
+		F2D7CC9A1DD1B53700783793 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CC991DD1B53700783793 /* main.m */; };
+		F2D7CC9D1DD1B53700783793 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CC9C1DD1B53700783793 /* AppDelegate.m */; };
+		F2D7CCA01DD1B53700783793 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CC9F1DD1B53700783793 /* ViewController.m */; };
+		F2D7CCA31DD1B53700783793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D7CCA11DD1B53700783793 /* Main.storyboard */; };
+		F2D7CCA51DD1B53700783793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2D7CCA41DD1B53700783793 /* Assets.xcassets */; };
+		F2D7CCA81DD1B53700783793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D7CCA61DD1B53700783793 /* LaunchScreen.storyboard */; };
+		F2D7CCB21DD1B5DB00783793 /* FMGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CCB11DD1B5DB00783793 /* FMGameManager.m */; };
+		F2D7CCB51DD1BBD300783793 /* FMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CCB41DD1BBD300783793 /* FMButton.m */; };
+		F2D7CCB81DD1C64200783793 /* FMConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CCB71DD1C64200783793 /* FMConstant.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		241C3BA7A614DFF40E91AC2F /* Pods-findmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-findmine/Pods-findmine.release.xcconfig"; sourceTree = "<group>"; };
+		78FCC1FEE561A36A0C76BCCB /* libPods-findmine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-findmine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81CFCE1A7B217583F550ED91 /* Pods-findmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-findmine/Pods-findmine.debug.xcconfig"; sourceTree = "<group>"; };
+		F2A549401DD2FC09000F4148 /* FMButtonInfoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMButtonInfoDelegate.h; sourceTree = "<group>"; };
+		F2D7CC951DD1B53700783793 /* findmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = findmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2D7CC991DD1B53700783793 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2D7CC9B1DD1B53700783793 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F2D7CC9C1DD1B53700783793 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F2D7CC9E1DD1B53700783793 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F2D7CC9F1DD1B53700783793 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F2D7CCA21DD1B53700783793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F2D7CCA41DD1B53700783793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2D7CCA71DD1B53700783793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F2D7CCA91DD1B53700783793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2D7CCB01DD1B5DB00783793 /* FMGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGameManager.h; sourceTree = "<group>"; };
+		F2D7CCB11DD1B5DB00783793 /* FMGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGameManager.m; sourceTree = "<group>"; };
+		F2D7CCB31DD1BBD300783793 /* FMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMButton.h; sourceTree = "<group>"; };
+		F2D7CCB41DD1BBD300783793 /* FMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMButton.m; sourceTree = "<group>"; };
+		F2D7CCB61DD1C64200783793 /* FMConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMConstant.h; sourceTree = "<group>"; };
+		F2D7CCB71DD1C64200783793 /* FMConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMConstant.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2D7CC921DD1B53700783793 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34B84E40D987AEAC9DF0DD26 /* libPods-findmine.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		383E73B7998ED9462894A4D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81CFCE1A7B217583F550ED91 /* Pods-findmine.debug.xcconfig */,
+				241C3BA7A614DFF40E91AC2F /* Pods-findmine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		92F65893A8EDC33C5A8980D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78FCC1FEE561A36A0C76BCCB /* libPods-findmine.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2D7CC8C1DD1B53700783793 = {
+			isa = PBXGroup;
+			children = (
+				F2D7CC971DD1B53700783793 /* findmine */,
+				F2D7CC961DD1B53700783793 /* Products */,
+				383E73B7998ED9462894A4D9 /* Pods */,
+				92F65893A8EDC33C5A8980D7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F2D7CC961DD1B53700783793 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2D7CC951DD1B53700783793 /* findmine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2D7CC971DD1B53700783793 /* findmine */ = {
+			isa = PBXGroup;
+			children = (
+				F2D7CCAF1DD1B5C300783793 /* Logic */,
+				F2D7CC9B1DD1B53700783793 /* AppDelegate.h */,
+				F2D7CC9C1DD1B53700783793 /* AppDelegate.m */,
+				F2D7CC9E1DD1B53700783793 /* ViewController.h */,
+				F2D7CC9F1DD1B53700783793 /* ViewController.m */,
+				F2D7CCA11DD1B53700783793 /* Main.storyboard */,
+				F2D7CCA41DD1B53700783793 /* Assets.xcassets */,
+				F2D7CCA61DD1B53700783793 /* LaunchScreen.storyboard */,
+				F2D7CCA91DD1B53700783793 /* Info.plist */,
+				F2D7CC981DD1B53700783793 /* Supporting Files */,
+			);
+			path = findmine;
+			sourceTree = "<group>";
+		};
+		F2D7CC981DD1B53700783793 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2D7CC991DD1B53700783793 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2D7CCAF1DD1B5C300783793 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				F2D7CCB01DD1B5DB00783793 /* FMGameManager.h */,
+				F2D7CCB11DD1B5DB00783793 /* FMGameManager.m */,
+				F2D7CCB31DD1BBD300783793 /* FMButton.h */,
+				F2D7CCB41DD1BBD300783793 /* FMButton.m */,
+				F2D7CCB61DD1C64200783793 /* FMConstant.h */,
+				F2D7CCB71DD1C64200783793 /* FMConstant.m */,
+				F2A549401DD2FC09000F4148 /* FMButtonInfoDelegate.h */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2D7CC941DD1B53700783793 /* findmine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2D7CCAC1DD1B53700783793 /* Build configuration list for PBXNativeTarget "findmine" */;
+			buildPhases = (
+				44A4D3852ED546A66AD8F864 /* [CP] Check Pods Manifest.lock */,
+				F2D7CC911DD1B53700783793 /* Sources */,
+				F2D7CC921DD1B53700783793 /* Frameworks */,
+				F2D7CC931DD1B53700783793 /* Resources */,
+				4C10F5A9CF09E98A5A0C606E /* [CP] Embed Pods Frameworks */,
+				D7A7D34192D016591176EC5F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = findmine;
+			productName = findmine;
+			productReference = F2D7CC951DD1B53700783793 /* findmine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2D7CC8D1DD1B53700783793 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = amoyio;
+				TargetAttributes = {
+					F2D7CC941DD1B53700783793 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 93GA46J68Y;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F2D7CC901DD1B53700783793 /* Build configuration list for PBXProject "findmine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F2D7CC8C1DD1B53700783793;
+			productRefGroup = F2D7CC961DD1B53700783793 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2D7CC941DD1B53700783793 /* findmine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2D7CC931DD1B53700783793 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2D7CCA81DD1B53700783793 /* LaunchScreen.storyboard in Resources */,
+				F2D7CCA51DD1B53700783793 /* Assets.xcassets in Resources */,
+				F2D7CCA31DD1B53700783793 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44A4D3852ED546A66AD8F864 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4C10F5A9CF09E98A5A0C606E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findmine/Pods-findmine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7A7D34192D016591176EC5F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-findmine/Pods-findmine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2D7CC911DD1B53700783793 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2D7CCA01DD1B53700783793 /* ViewController.m in Sources */,
+				F2D7CCB51DD1BBD300783793 /* FMButton.m in Sources */,
+				F2D7CCB81DD1C64200783793 /* FMConstant.m in Sources */,
+				F2D7CC9D1DD1B53700783793 /* AppDelegate.m in Sources */,
+				F2D7CCB21DD1B5DB00783793 /* FMGameManager.m in Sources */,
+				F2D7CC9A1DD1B53700783793 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F2D7CCA11DD1B53700783793 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2D7CCA21DD1B53700783793 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F2D7CCA61DD1B53700783793 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2D7CCA71DD1B53700783793 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2D7CCAA1DD1B53700783793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2D7CCAB1DD1B53700783793 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2D7CCAD1DD1B53700783793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81CFCE1A7B217583F550ED91 /* Pods-findmine.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93GA46J68Y;
+				INFOPLIST_FILE = findmine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amoyio.findmine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F2D7CCAE1DD1B53700783793 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 241C3BA7A614DFF40E91AC2F /* Pods-findmine.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93GA46J68Y;
+				INFOPLIST_FILE = findmine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amoyio.findmine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2D7CC901DD1B53700783793 /* Build configuration list for PBXProject "findmine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2D7CCAA1DD1B53700783793 /* Debug */,
+				F2D7CCAB1DD1B53700783793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2D7CCAC1DD1B53700783793 /* Build configuration list for PBXNativeTarget "findmine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2D7CCAD1DD1B53700783793 /* Debug */,
+				F2D7CCAE1DD1B53700783793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2D7CC8D1DD1B53700783793 /* Project object */;
+}
