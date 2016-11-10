@@ -3,6 +3,6 @@ platform :ios, '8.0'
 
 target 'findmine' do
 
-  pod 'SVProgressHUD'
+#  pod 'SVProgressHUD'
 
 end
