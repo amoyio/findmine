@@ -67,8 +67,8 @@
     }];
     self.totalCountLabel.hidden = NO;
     self.remainCountLabel.hidden = NO;
-    self.totalCountLabel.text = [NSString stringWithFormat:@"Total: %ld",[FMGameManager shareManager].mineSet.count];
-    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain:  %ld",[FMGameManager shareManager].mineSet.count];
+    self.totalCountLabel.text = [NSString stringWithFormat:@"Total: %ld",(unsigned long)[FMGameManager shareManager].mineSet.count];
+    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain:  %ld",(unsigned long)[FMGameManager shareManager].mineSet.count];
     [self addCurrentMapStatus];
 }
 
@@ -101,6 +101,7 @@
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Lose" message:@"You Lose\n Press Confirm Botton To Restart Game" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
     UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -142,8 +143,8 @@
 }
 
 -(void)displayRemainTime:(NSInteger)time{
-    self.firstvalueImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%ld",time/10]];
-    self.secondvalueImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%ld",time%10]];
+    self.firstvalueImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%d",time/10]];
+    self.secondvalueImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%d",time%10]];
 }
 
 - (void)tapBlank:(FMButton *)btn{
@@ -183,7 +184,6 @@
             [self.pannelView addSubview:button];
             if ([[FMGameManager shareManager].mineSet containsObject:@(i * boardWidthCount + j + 1)]) {
                 button.isMine = YES;
-                [button markAsMine];
             }
             
         }
@@ -299,10 +299,6 @@
     [self setupGameLayout];
     [self setupIndicateValue];
     [self bingAction];
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self displayRemainTime:[FMGameManager shareManager].gameTime];
-        [[FMGameManager shareManager] decreaseTime];
-    }];
     [self beginGame];
     [self addCurrentMapStatus];
 }

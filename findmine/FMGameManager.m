@@ -154,6 +154,11 @@
 
     // 检测雷区
     if ([[FMGameManager shareManager].mineSet containsObject:@(row * boardWidthCount + column + 1)]) {
+        for(NSNumber *number in self.mineSet){
+            
+            FMButton *mineButton = [self.delegate buttonForIndex:([number integerValue] - 1)];
+            [mineButton markAsMine];
+        }
         FMButton *button = [self.delegate buttonForIndex:[self.delegate indexWithRow:row andColumn:column]];
         [button markAsFailFlag];
         [self gameOver];
