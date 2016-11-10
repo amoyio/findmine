@@ -19,33 +19,28 @@
 
 @implementation FMGameManager
 
--(NSMutableSet *)guessSet{
-    if (!_guessSet) {
-        _guessSet = [NSMutableSet set];
-    }
-    return _guessSet;
+
+
++(instancetype)shareManager{
+    static FMGameManager *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[FMGameManager alloc]init];
+        instance.difficultLevel = 1;
+        instance.gameTime = BEGIN_TIME - 10 * instance.difficultLevel;
+    });
+    return instance;
+}
+
+-(BOOL)checkGameResult{
+    return NO;
 }
 
 
 
--(NSInteger)decreaseTime{
-    self.gameTime -= 1;
-    if (self.gameTime < 0) {
-        [self gameOver];
-        return 0;
-    }
-    return self.gameTime;
-}
 
--(void)gameOver{
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"FM_GAME_OVER" object:nil];
-    
-}
 
--(void)gameWin{
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"FM_GAME_WIN" object:nil];
-}
-
+#pragma mark - convience method
 -(void)addGuess:(NSInteger)guessVal{
     [self.guessSet addObject:@(guessVal)];
     [self.delegate setRemain:self.mineSet.count - self.guessSet.count];
@@ -65,6 +60,50 @@
     }
 }
 
+
+-(NSInteger)decreaseTime{
+    self.gameTime -= 1;
+    if (self.gameTime < 0) {
+        [self gameOver];
+        return 0;
+    }
+    return self.gameTime;
+}
+
+#pragma mark - game logic
+
+/**
+ 生成随机雷区列表
+
+ @param count 生成数量
+ @return 雷区集合
+ */
+-(NSSet *)generateRandomListWithCount:(NSUInteger)count{
+    NSMutableSet *valueSet = [NSMutableSet set];
+    do {
+        NSNumber *randomIndex = @(arc4random() % (boardWidthCount * boardHeightCount) + 1);
+        [valueSet addObject:randomIndex];
+    } while (valueSet.count < count);
+    return valueSet;
+}
+
+
+-(void)gameOver{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"FM_GAME_OVER" object:nil];
+    
+}
+
+-(void)gameWin{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"FM_GAME_WIN" object:nil];
+}
+
+
+
+/**
+ 检测游戏成功
+
+ @return 游戏成功为Yes
+ */
 -(BOOL)checkGameWin{
     if (self.guessSet.count < self.mineSet.count) {
         return NO;
@@ -77,49 +116,35 @@
     }
 }
 
+
+/**
+ 进入下一个等级
+ */
 -(void)enterNextLevel{
     self.difficultLevel += 1;
 }
 
+
+/**
+重置游戏时间
+ */
 -(void)resetGameTime{
     self.gameTime = BEGIN_TIME - 10 * self.difficultLevel;
 }
 
-+(instancetype)shareManager{
-    static FMGameManager *instance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[FMGameManager alloc]init];
-        instance.difficultLevel = 1;
-        instance.gameTime = BEGIN_TIME - 10 * instance.difficultLevel;
-    });
-    return instance;
-}
 
--(BOOL)checkGameResult{
-    return NO;
-}
 
--(NSSet *)generateRandomListWithCount:(NSUInteger)count{
-        NSMutableSet *valueSet = [NSMutableSet set];
-        do {
-            NSNumber *randomIndex = @(arc4random() % (boardWidthCount * boardHeightCount) + 1);
-            [valueSet addObject:randomIndex];
-        } while (valueSet.count < count);
-        return valueSet;
-}
-
--(NSSet *)mineSet{
-    if (!_mineSet) {
-        _mineSet = [self generateRandomListWithCount:MINE_COUNT];
-    }
-    return _mineSet;
-}
-
+/**
+ 随机化
+ */
 - (void)randomize{
     _mineSet = [self generateRandomListWithCount:MINE_COUNT];
 }
 
+
+/**
+ 重新载入游戏
+ */
 - (void)reloadGame{
     _guessSet = [NSMutableSet set];
     _openedList = [NSMutableArray arrayWithCapacity:boardHeightCount];
@@ -132,24 +157,13 @@
     self.remainMineValue = MINE_COUNT;
 }
 
--(NSMutableArray *)openedList{
-    if (!_openedList) {
-        _openedList = [NSMutableArray arrayWithCapacity:boardHeightCount];
-        for (NSInteger i = 0; i<boardHeightCount; i++) {
-            [_openedList addObject:[NSMutableArray arrayWithCapacity:boardWidthCount]];
-            for (NSInteger j = 0 ; j < boardWidthCount ; j++) {
-                [_openedList[i] addObject:@(NO)];
-            }
-        }
-    }
-    
-    return _openedList;
-}
 
+/**
+ 玩家点击行为
 
-
-
-
+ @param row 行号
+ @param column 列号
+ */
 -(void)tapRow:(NSInteger)row andColumn:(NSInteger)column{
 
     // 检测雷区
@@ -333,6 +347,35 @@
         [self tapRow:row - 1 andColumn:column - 1];
     }
 
+}
+#pragma mark - lazy load
+-(NSMutableArray *)openedList{
+    if (!_openedList) {
+        _openedList = [NSMutableArray arrayWithCapacity:boardHeightCount];
+        for (NSInteger i = 0; i<boardHeightCount; i++) {
+            [_openedList addObject:[NSMutableArray arrayWithCapacity:boardWidthCount]];
+            for (NSInteger j = 0 ; j < boardWidthCount ; j++) {
+                [_openedList[i] addObject:@(NO)];
+            }
+        }
+    }
+    
+    return _openedList;
+}
+
+-(NSMutableSet *)guessSet{
+    if (!_guessSet) {
+        _guessSet = [NSMutableSet set];
+    }
+    return _guessSet;
+}
+
+
+-(NSSet *)mineSet{
+    if (!_mineSet) {
+        _mineSet = [self generateRandomListWithCount:MINE_COUNT];
+    }
+    return _mineSet;
 }
 
 @end

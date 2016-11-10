@@ -14,6 +14,7 @@
 #import "FMButton.h"
 @interface ViewController ()<FMButtonInfoDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *timePannel;
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *pannelView;
@@ -28,9 +29,6 @@
 
 @implementation ViewController
 
--(void)getRemainTime{
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,17 +41,64 @@
 }
 
 
+/**
+ 设置通知和基本样式
+ */
 -(void)setupBasicComponent{
     [self.gameStatusBtn setTitle:@"Go" forState:UIControlStateNormal];
     self.gameStatusBtn.layer.cornerRadius = (NSInteger)self.gameStatusBtn.frame.size.width * 0.5;
+    self.timePannel.layer.cornerRadius = 4;
+    self.timePannel.layer.masksToBounds = YES;
     [self.gameStatusBtn addTarget:self action:@selector(beginGame) forControlEvents:UIControlEventTouchUpInside];
     
     //NSNotification
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gameOverReact) name:@"FM_GAME_OVER" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gameWinReact) name:@"FM_GAME_WIN" object:nil];
-    
 }
 
+#pragma mark - game logic
+/**
+ 重新加载游戏
+ */
+- (void)reloadGame{
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
+    [[FMGameManager shareManager] reloadGame];
+    [[FMGameManager shareManager] randomize];
+    [self setupGameLayout];
+    [self setupIndicateValue];
+    [self bingAction];
+    [self beginGame];
+    [self addCurrentMapStatus];
+}
+
+/**
+ 扫雷布局
+ */
+- (void)setupGameLayout{
+    for (UIView *view in self.pannelView.subviews) {
+        [view removeFromSuperview];
+    }
+    CGFloat cellSizeWidth = ([UIScreen mainScreen].bounds.size.width - 2 * boardLeftMargin - boardSelfMargin * (boardWidthCount - 1)) / boardWidthCount;
+    for (int i = 0; i < boardHeightCount; i++) {
+        for (int j = 0; j<boardWidthCount; j++) {
+            FMButton *button = [[FMButton alloc]initWithFrame:CGRectMake(boardLeftMargin + j * cellSizeWidth + (j - 1) * boardSelfMargin, boardLeftMargin + i * (cellSizeWidth + boardSelfMargin), cellSizeWidth, cellSizeWidth)];
+            //避免和没有设置tag的view重叠，所有的tag数加1
+            button.backgroundColor = [UIColor cyanColor];
+            button.tag = i * boardWidthCount + j + 1;
+            button.userInteractionEnabled = NO;
+            [self.pannelView addSubview:button];
+            if ([[FMGameManager shareManager].mineSet containsObject:@(i * boardWidthCount + j + 1)]) {
+                button.isMine = YES;
+            }
+            
+        }
+    }
+}
+
+/**
+ 开始游戏
+ */
 -(void)beginGame{
     self.levelLabel.hidden = NO;
     self.levelLabel.text = [NSString stringWithFormat:@"Lv.%d",[FMGameManager shareManager].difficultLevel];
@@ -72,6 +117,10 @@
     [self addCurrentMapStatus];
 }
 
+
+/**
+ 将当前状态写入游戏管理者类
+ */
 -(void)addCurrentMapStatus{
     NSArray *openList = [FMGameManager shareManager].openedList;
     for(NSInteger i = 0; i < boardWidthCount * boardHeightCount ; i++){
@@ -89,12 +138,19 @@
 }
 
 
+/**
+ 移除通知和timer
+ */
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [self.gameTimer invalidate];
     self.gameTimer = nil;
 }
 
+
+/**
+ 游戏失败的表现
+ */
 -(void)gameOverReact{
     [self.gameTimer invalidate];
     self.gameTimer = nil;
@@ -104,7 +160,7 @@
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[FMGameManager shareManager] resetGameTime];
         [self reloadGame];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -116,20 +172,21 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)setRemain:(NSInteger)remainVal{
-    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain: %ld",(long)remainVal];
-}
 
+
+/**
+ 游戏成功的表现
+ */
 -(void)gameWinReact{
     [self.gameTimer invalidate];
     self.gameTimer = nil;
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Win" message:@"You Win!!!\n Press Confirm Botton To Enter Next Level" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Win" message:@"You Win!!!\n Press \"Go\" Botton To Enter Next Level" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [[FMGameManager shareManager]resetGameTime];
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Go!" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[FMGameManager shareManager] enterNextLevel];
         [[FMGameManager shareManager] resetGameTime];
         [self reloadGame];
@@ -142,15 +199,34 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+#pragma mark - convience method
+
+/**
+ 表现剩余时间
+
+ @param time 时间常数
+ */
 -(void)displayRemainTime:(NSInteger)time{
     self.firstvalueImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%d",time/10]];
     self.secondvalueImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"d%d",time%10]];
 }
 
+
+/**
+ 按钮点击事件
+
+ @param btn 按钮
+ */
 - (void)tapBlank:(FMButton *)btn{
     [[FMGameManager shareManager] tapRow:(btn.tag - 1) / boardWidthCount andColumn:(btn.tag - 1) % boardWidthCount];
 }
 
+
+/**
+ 长按点击事件
+
+ @param gesture 长按手势
+ */
 -(void) longPress: (UILongPressGestureRecognizer *) gesture{
     if (gesture.state == UIGestureRecognizerStateEnded) {
         FMButton *button = (FMButton *)gesture.view;
@@ -160,6 +236,10 @@
     }
 }
 
+
+/**
+ 给每个按钮添加点击事件
+ */
 - (void)bingAction{
     for(NSInteger i = 0; i < boardWidthCount * boardHeightCount ; i++){
         FMButton *button = [self buttonForIndex:i];
@@ -169,27 +249,13 @@
     }
 }
 
-- (void)setupGameLayout{
-    for (UIView *view in self.pannelView.subviews) {
-        [view removeFromSuperview];
-    }
-    CGFloat cellSizeWidth = ([UIScreen mainScreen].bounds.size.width - 2 * boardLeftMargin - boardSelfMargin * (boardWidthCount - 1)) / boardWidthCount;
-    for (int i = 0; i < boardHeightCount; i++) {
-        for (int j = 0; j<boardWidthCount; j++) {
-            FMButton *button = [[FMButton alloc]initWithFrame:CGRectMake(boardLeftMargin + j * cellSizeWidth + (j - 1) * boardSelfMargin, boardLeftMargin + i * (cellSizeWidth + boardSelfMargin), cellSizeWidth, cellSizeWidth)];
-            //避免和没有设置tag的view重叠，所有的tag数加1
-            button.backgroundColor = [UIColor cyanColor];
-            button.tag = i * boardWidthCount + j + 1;
-//            button.userInteractionEnabled = NO;
-            [self.pannelView addSubview:button];
-            if ([[FMGameManager shareManager].mineSet containsObject:@(i * boardWidthCount + j + 1)]) {
-                button.isMine = YES;
-            }
-            
-        }
-    }
-}
 
+
+
+
+/**
+ 设置雷区附近的暗示值
+ */
 - (void)setupIndicateValue{
     for (NSNumber *mineIndex in [FMGameManager shareManager].mineSet) {
         NSInteger rowVal = [self rowFromIndex:[mineIndex integerValue]];
@@ -266,10 +332,22 @@
 }
 
 
+/**
+ 通过行列定位按钮标签
+
+ @param row 行号
+ @param column 列号
+ @return 按钮标签值
+ */
 - (NSInteger)tagWithRow:(NSInteger)row andColumn:(NSInteger)column{
     return boardWidthCount * row + column + 1;
 }
 
+
+/**
+ 通过index定位行号
+ @return 行号
+ */
 - (NSInteger)rowFromIndex:(NSInteger)index{
     if (index == 0) {
         return 0;
@@ -279,10 +357,23 @@
     
 }
 
+/**
+ 通过index定位列号
+
+ @param index index
+ @return 列号
+ */
 - (NSInteger)columnFromIndex:(NSInteger)index{
     return (index - 1) % boardWidthCount;
 }
 
+/**
+ 添加暗示值方法
+
+ @param rowVal 行
+ @param columnVal 列
+ @param val 数值
+ */
 - (void)addIndicateValToButtonInRow:(NSInteger)rowVal Column:(NSInteger)columnVal By:(NSInteger)val{
     FMButton *button = [self buttonForIndex:[self indexWithRow:rowVal andColumn:columnVal]];
     if (!button.isMine) {
@@ -291,17 +382,6 @@
 }
 
 
-- (void)reloadGame{
-    [self.gameTimer invalidate];
-    self.gameTimer = nil;
-    [[FMGameManager shareManager] reloadGame];
-    [[FMGameManager shareManager] randomize];
-    [self setupGameLayout];
-    [self setupIndicateValue];
-    [self bingAction];
-    [self beginGame];
-    [self addCurrentMapStatus];
-}
 
 
 
@@ -325,5 +405,8 @@
     }
 }
 
+- (void)setRemain:(NSInteger)remainVal{
+    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain: %ld",(long)remainVal];
+}
 
 @end

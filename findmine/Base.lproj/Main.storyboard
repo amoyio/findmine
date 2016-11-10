@@ -123,6 +123,7 @@
                         <outlet property="pannelView" destination="EAc-fL-0tL" id="Bby-cg-eVW"/>
                         <outlet property="remainCountLabel" destination="sIX-eZ-82I" id="gpY-82-5d2"/>
                         <outlet property="secondvalueImgView" destination="uaI-6a-h6X" id="DFv-oY-jGF"/>
+                        <outlet property="timePannel" destination="oeb-jX-nE4" id="HbZ-ZR-aa4"/>
                         <outlet property="totalCountLabel" destination="axz-11-9nW" id="yAa-fh-93h"/>
                     </connections>
                 </viewController>
