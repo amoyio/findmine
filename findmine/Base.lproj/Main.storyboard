@@ -55,7 +55,8 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="s2z-ra-R9F" secondAttribute="height" multiplier="1:1" id="hBb-Qa-NDs"/>
                                         </constraints>
-                                        <state key="normal" title="开始">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <state key="normal" title="Go">
                                             <color key="titleColor" red="0.95749792109999998" green="0.98817124300000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>

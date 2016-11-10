@@ -5,6 +5,8 @@
 //  Created by 凌空 on 2016/11/8.
 //  Copyright © 2016年 amoyio. All rights reserved.
 //
+// Todo: 时间双倍计数
+
 
 #import "ViewController.h"
 #import "FMGameManager.h"
@@ -39,7 +41,7 @@
 
 
 -(void)setupBasicComponent{
-    [self.gameStatusBtn setTitle:@"开始" forState:UIControlStateNormal];
+    [self.gameStatusBtn setTitle:@"Go" forState:UIControlStateNormal];
     self.gameStatusBtn.layer.cornerRadius = (NSInteger)self.gameStatusBtn.frame.size.width * 0.5;
     [self.gameStatusBtn addTarget:self action:@selector(beginGame) forControlEvents:UIControlEventTouchUpInside];
     

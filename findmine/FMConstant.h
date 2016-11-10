@@ -17,7 +17,7 @@ typedef enum : NSUInteger {
 } CellState;
 
 #define boardWidthCount 8
-#define boardHeightCount 10
+#define boardHeightCount 14
 #define pannelTopMargin 60
 #define boardLeftMargin 4
 #define boardSelfMargin 2
