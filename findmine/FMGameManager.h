@@ -12,6 +12,7 @@
 #define BEGIN_TIME 100
 @interface FMGameManager : NSObject
 @property(nonatomic,copy)NSSet *mineSet;
+@property(nonatomic,assign) NSUInteger difficultLevel;
 @property(nonatomic,copy)NSMutableSet *guessSet;
 @property(nonatomic,assign) NSInteger gameTime;
 @property(nonatomic,copy) NSMutableArray *openedList;

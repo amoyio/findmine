@@ -12,7 +12,7 @@
 #import "FMButton.h"
 @interface FMGameManager()
 
-@property(nonatomic,assign) NSUInteger difficultLevel;
+
 @property(nonatomic,assign) NSInteger remainMineValue;
 @end
 

@@ -13,6 +13,9 @@
 #import "FMButtonInfoDelegate.h"
 #import "FMButton.h"
 @interface ViewController ()<FMButtonInfoDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+
 @property (weak, nonatomic) IBOutlet UIView *pannelView;
 @property (weak, nonatomic) IBOutlet UIImageView *firstvalueImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondvalueImgView;
@@ -52,6 +55,8 @@
 }
 
 -(void)beginGame{
+    self.levelLabel.hidden = NO;
+    self.levelLabel.text = [NSString stringWithFormat:@"Lv.%d",[FMGameManager shareManager].difficultLevel];
     self.gameStatusBtn.hidden = YES;
     self.firstvalueImgView.hidden = NO;
     self.secondvalueImgView.hidden = NO;

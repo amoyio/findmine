@@ -17,10 +17,10 @@ typedef enum : NSUInteger {
 } CellState;
 
 #define boardWidthCount 8
-#define boardHeightCount 14
+#define boardHeightCount 12
 #define pannelTopMargin 60
 #define boardLeftMargin 4
-#define boardSelfMargin 2
+#define boardSelfMargin 0
 
 @interface FMConstant : NSObject
 
