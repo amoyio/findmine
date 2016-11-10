@@ -22,4 +22,5 @@
 - (void)markAsReveal;
 -(void)markAsExplosion;
 -(void)markAsUnknown;
+-(void)markAsFailFlag;
 @end

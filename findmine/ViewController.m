@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *firstvalueImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondvalueImgView;
 @property (weak, nonatomic) IBOutlet UIButton *gameStatusBtn;
+@property (weak, nonatomic) IBOutlet UILabel *remainCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalCountLabel;
 @property(nonatomic,strong) NSTimer *gameTimer;
 
 @end
@@ -38,6 +40,7 @@
 
 -(void)setupBasicComponent{
     [self.gameStatusBtn setTitle:@"开始" forState:UIControlStateNormal];
+    self.gameStatusBtn.layer.cornerRadius = (NSInteger)self.gameStatusBtn.frame.size.width * 0.5;
     [self.gameStatusBtn addTarget:self action:@selector(beginGame) forControlEvents:UIControlEventTouchUpInside];
     
     //NSNotification
@@ -55,6 +58,10 @@
         [[FMGameManager shareManager] decreaseTime];
         
     }];
+    self.totalCountLabel.hidden = NO;
+    self.remainCountLabel.hidden = NO;
+    self.totalCountLabel.text = [NSString stringWithFormat:@"Total: %ld",[FMGameManager shareManager].mineSet.count];
+    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain:  %ld",[FMGameManager shareManager].mineSet.count];
     [self addCurrentMapStatus];
 }
 
@@ -62,7 +69,13 @@
     NSArray *openList = [FMGameManager shareManager].openedList;
     for(NSInteger i = 0; i < boardWidthCount * boardHeightCount ; i++){
         FMButton *button = [self buttonForIndex:i];
-        if ( button.indicateVal > 0) {
+        button.userInteractionEnabled = YES;
+        button.isHiden = YES;
+        if (button.isMine) {
+            //crash protection
+            if ([openList[0] count] == 0) {
+                return;
+            }
             openList[i/boardWidthCount][i%boardWidthCount] = @(YES);
         }
     }
@@ -93,6 +106,10 @@
     [alertController addAction:confirmAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)setRemain:(NSInteger)remainVal{
+    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain: %ld",(long)remainVal];
 }
 
 -(void)gameWinReact{
@@ -129,7 +146,9 @@
 -(void) longPress: (UILongPressGestureRecognizer *) gesture{
     if (gesture.state == UIGestureRecognizerStateEnded) {
         FMButton *button = (FMButton *)gesture.view;
-        [button markAsUnknown];
+        if (button.isHiden) {
+            [button markAsUnknown];
+        }
     }
 }
 
@@ -143,6 +162,9 @@
 }
 
 - (void)setupGameLayout{
+    for (UIView *view in self.pannelView.subviews) {
+        [view removeFromSuperview];
+    }
     CGFloat cellSizeWidth = ([UIScreen mainScreen].bounds.size.width - 2 * boardLeftMargin - boardSelfMargin * (boardWidthCount - 1)) / boardWidthCount;
     for (int i = 0; i < boardHeightCount; i++) {
         for (int j = 0; j<boardWidthCount; j++) {
@@ -150,6 +172,7 @@
             //避免和没有设置tag的view重叠，所有的tag数加1
             button.backgroundColor = [UIColor cyanColor];
             button.tag = i * boardWidthCount + j + 1;
+//            button.userInteractionEnabled = NO;
             [self.pannelView addSubview:button];
             if ([[FMGameManager shareManager].mineSet containsObject:@(i * boardWidthCount + j + 1)]) {
                 button.isMine = YES;
@@ -262,6 +285,9 @@
 
 
 - (void)reloadGame{
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
+    [[FMGameManager shareManager] reloadGame];
     [[FMGameManager shareManager] randomize];
     [self setupGameLayout];
     [self setupIndicateValue];
@@ -270,6 +296,8 @@
         [self displayRemainTime:[FMGameManager shareManager].gameTime];
         [[FMGameManager shareManager] decreaseTime];
     }];
+    [self beginGame];
+    [self addCurrentMapStatus];
 }
 
 

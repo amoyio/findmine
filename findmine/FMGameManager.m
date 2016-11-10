@@ -26,6 +26,8 @@
     return _guessSet;
 }
 
+
+
 -(NSInteger)decreaseTime{
     self.gameTime -= 1;
     if (self.gameTime < 0) {
@@ -46,12 +48,14 @@
 
 -(void)addGuess:(NSInteger)guessVal{
     [self.guessSet addObject:@(guessVal)];
+    [self.delegate setRemain:self.mineSet.count - self.guessSet.count];
     if ([self checkGameWin]) {
         [self gameWin];
     }
 }
 
 -(void)removeGuess:(NSInteger)guessVal{
+    [self.delegate setRemain:self.mineSet.count - self.guessSet.count];
     if (self.guessSet.count == 0) {
         return;
     }
@@ -78,7 +82,7 @@
 }
 
 -(void)resetGameTime{
-    self.gameTime = 20 - 10 * self.difficultLevel;
+    self.gameTime = BEGIN_TIME - 10 * self.difficultLevel;
 }
 
 +(instancetype)shareManager{
@@ -87,7 +91,7 @@
     dispatch_once(&onceToken, ^{
         instance = [[FMGameManager alloc]init];
         instance.difficultLevel = 1;
-        instance.gameTime = 20 - 10 * instance.difficultLevel;
+        instance.gameTime = BEGIN_TIME - 10 * instance.difficultLevel;
     });
     return instance;
 }
@@ -107,13 +111,25 @@
 
 -(NSSet *)mineSet{
     if (!_mineSet) {
-        _mineSet = [self generateRandomListWithCount:10];
+        _mineSet = [self generateRandomListWithCount:MINE_COUNT];
     }
     return _mineSet;
 }
 
 - (void)randomize{
-    _mineSet = [self generateRandomListWithCount:10];
+    _mineSet = [self generateRandomListWithCount:MINE_COUNT];
+}
+
+- (void)reloadGame{
+    _guessSet = [NSMutableSet set];
+    _openedList = [NSMutableArray arrayWithCapacity:boardHeightCount];
+    for (NSInteger i = 0; i<boardHeightCount; i++) {
+        [_openedList addObject:[NSMutableArray arrayWithCapacity:boardWidthCount]];
+        for (NSInteger j = 0 ; j < boardWidthCount ; j++) {
+            [_openedList[i] addObject:@(NO)];
+        }
+    }
+    self.remainMineValue = MINE_COUNT;
 }
 
 -(NSMutableArray *)openedList{
@@ -138,6 +154,8 @@
 
     // 检测雷区
     if ([[FMGameManager shareManager].mineSet containsObject:@(row * boardWidthCount + column + 1)]) {
+        FMButton *button = [self.delegate buttonForIndex:[self.delegate indexWithRow:row andColumn:column]];
+        [button markAsFailFlag];
         [self gameOver];
         return;
     }
@@ -154,7 +172,7 @@
     [button markAsReveal];
     self.openedList[row][column] = @(YES);
     //增加可玩性
-    if (arc4random() % 20 < 2) {
+    if (arc4random() % 20 < 4) {
         return;
     }
     if (row == 0 || column == 0|| row == boardHeightCount - 1 || column == boardWidthCount - 1) {

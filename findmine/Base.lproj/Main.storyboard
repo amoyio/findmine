@@ -51,21 +51,42 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2z-ra-R9F">
                                         <rect key="frame" x="159" y="4" width="56" height="56"/>
+                                        <color key="backgroundColor" red="0.84698660714285712" green="0.33938766554422012" blue="0.29476740934410878" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="s2z-ra-R9F" secondAttribute="height" multiplier="1:1" id="hBb-Qa-NDs"/>
                                         </constraints>
-                                        <state key="normal" title="开始"/>
+                                        <state key="normal" title="开始">
+                                            <color key="titleColor" red="0.95749792109999998" green="0.98817124300000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-eZ-82I">
+                                        <rect key="frame" x="241" y="8" width="130" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.28657924107142857" green="0.27668170243866591" blue="0.25358744562888635" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axz-11-9nW">
+                                        <rect key="frame" x="241" y="37" width="130" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.28657924107142857" green="0.27668170243866591" blue="0.25358744562888635" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.2873165862" green="0.4049438085" blue="0.58474880460000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.96496384392665879" blue="0.88487723214285718" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="axz-11-9nW" firstAttribute="leading" secondItem="oeb-jX-nE4" secondAttribute="trailing" constant="4" id="0QP-GZ-AIs"/>
+                                    <constraint firstAttribute="trailing" secondItem="axz-11-9nW" secondAttribute="trailing" constant="4" id="1tt-j0-nXf"/>
                                     <constraint firstAttribute="height" constant="64" id="8HW-Gf-COK"/>
+                                    <constraint firstItem="sIX-eZ-82I" firstAttribute="top" secondItem="rZ2-Nw-8oY" secondAttribute="top" constant="8" id="9IK-SU-xjx"/>
+                                    <constraint firstItem="axz-11-9nW" firstAttribute="top" secondItem="sIX-eZ-82I" secondAttribute="bottom" constant="8" id="9eS-2b-o5d"/>
                                     <constraint firstItem="s2z-ra-R9F" firstAttribute="centerY" secondItem="rZ2-Nw-8oY" secondAttribute="centerY" id="Cm5-bP-neE"/>
                                     <constraint firstItem="s2z-ra-R9F" firstAttribute="centerX" secondItem="rZ2-Nw-8oY" secondAttribute="centerX" id="Dgo-yC-wGH"/>
+                                    <constraint firstAttribute="trailing" secondItem="sIX-eZ-82I" secondAttribute="trailing" constant="4" id="GeX-33-N6h"/>
                                     <constraint firstItem="oeb-jX-nE4" firstAttribute="centerY" secondItem="rZ2-Nw-8oY" secondAttribute="centerY" id="IhY-75-Wqe"/>
                                     <constraint firstItem="oeb-jX-nE4" firstAttribute="top" secondItem="rZ2-Nw-8oY" secondAttribute="top" constant="2" id="RzT-aL-aVE"/>
                                     <constraint firstAttribute="bottom" secondItem="s2z-ra-R9F" secondAttribute="bottom" constant="4" id="cVY-24-sOn"/>
                                     <constraint firstItem="oeb-jX-nE4" firstAttribute="centerX" secondItem="rZ2-Nw-8oY" secondAttribute="centerX" id="cfS-cI-tV8"/>
+                                    <constraint firstItem="sIX-eZ-82I" firstAttribute="leading" secondItem="oeb-jX-nE4" secondAttribute="trailing" constant="4" id="rT6-48-HLN"/>
                                     <constraint firstItem="s2z-ra-R9F" firstAttribute="top" secondItem="rZ2-Nw-8oY" secondAttribute="top" constant="4" id="sN7-5P-0sr"/>
                                 </constraints>
                             </view>
@@ -89,7 +110,9 @@
                         <outlet property="firstvalueImgView" destination="jmU-JD-kQr" id="qp6-RJ-K0m"/>
                         <outlet property="gameStatusBtn" destination="s2z-ra-R9F" id="R1K-pT-OtF"/>
                         <outlet property="pannelView" destination="EAc-fL-0tL" id="Bby-cg-eVW"/>
+                        <outlet property="remainCountLabel" destination="sIX-eZ-82I" id="gpY-82-5d2"/>
                         <outlet property="secondvalueImgView" destination="uaI-6a-h6X" id="DFv-oY-jGF"/>
+                        <outlet property="totalCountLabel" destination="axz-11-9nW" id="yAa-fh-93h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

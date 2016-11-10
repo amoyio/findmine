@@ -23,6 +23,11 @@
 
 -(void)showIndicate{
     [self setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld",self.indicateVal]] forState:UIControlStateNormal];
+    self.isHiden = NO;
+}
+
+-(void)markAsFailFlag{
+    [self setImage:[UIImage imageNamed:@"failed_flag"] forState:UIControlStateNormal];
 }
 
 
@@ -31,7 +36,8 @@
 }
 
 - (void)markAsReveal{
-    [self setImage:[UIImage imageNamed:@"failed_flag"] forState:UIControlStateNormal];
+    [self setImage:[UIImage imageNamed:@"opened"] forState:UIControlStateNormal];
+    self.isHiden = NO;
 }
 
 -(void)markAsExplosion{
@@ -61,7 +67,6 @@
             [self setImage:[UIImage imageNamed:@"flag"] forState:UIControlStateNormal];
             
             break;
-#warning question image
         case CellStateQuestion:
             [self setImage:[UIImage imageNamed:@"question"] forState:UIControlStateNormal];
             break;

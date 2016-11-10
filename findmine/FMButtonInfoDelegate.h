@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 @class FMButton;
 @protocol FMButtonInfoDelegate <NSObject>
--(BOOL)buttonHasIndicateValInRow:(NSInteger)row AndColumn:(NSInteger)column;
+- (BOOL)buttonHasIndicateValInRow:(NSInteger)row AndColumn:(NSInteger)column;
 - (FMButton *)buttonForIndex:(NSInteger)index;
 - (NSInteger)indexWithRow:(NSInteger)row andColumn:(NSInteger)column;
+- (void)setRemain:(NSInteger)remainVal; 
 @end

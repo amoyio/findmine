@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FMButtonInfoDelegate.h"
+#define MINE_COUNT 10
+#define BEGIN_TIME 100
 @interface FMGameManager : NSObject
 @property(nonatomic,copy)NSSet *mineSet;
 @property(nonatomic,copy)NSMutableSet *guessSet;
@@ -19,6 +21,7 @@
 -(NSInteger)decreaseTime;
 -(void)resetGameTime;
 - (void)randomize;
+- (void)reloadGame;
 -(NSSet *)generateRandomListWithCount:(NSUInteger)count;
 -(void)tapRow:(NSInteger)row andColumn:(NSInteger)column;
 
