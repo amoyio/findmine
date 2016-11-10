@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  findmine
+
+  Created by 凌空 on 2016/11/10.
+  Copyright © 2016年 amoyio. All rights reserved.
+*/
+"Lv." = "Lv.";
+"Total" = "Total";
+"Remain" = "Remain";
+"Go" = "Go";
+"You Win" = "You Win";
+"You Lose" = "You Lose";
+"Restart" = "Restart";
+"Cancel" = "Cancel";
+"Start" = "Go";
+"You Win!!!\n Press \"Go\" Botton To Enter Next Level" = "You Win!!!\n Press \"Go\" Botton To Enter Next Level";
+"You Lose\n Press Confirm Botton To Restart Game" = "You Lose\n Press Confirm Botton To Restart Game";

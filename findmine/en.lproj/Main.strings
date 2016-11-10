@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Lv.0"; ObjectID = "VnR-nb-OeY"; */
+"VnR-nb-OeY.text" = "Lv.0";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "axz-11-9nW"; */
+"axz-11-9nW.text" = "Total";
+
+/* Class = "UIButton"; normalTitle = "Go"; ObjectID = "s2z-ra-R9F"; */
+"s2z-ra-R9F.normalTitle" = "Go";
+
+/* Class = "UILabel"; text = "Remain"; ObjectID = "sIX-eZ-82I"; */
+"sIX-eZ-82I.text" = "Remain";

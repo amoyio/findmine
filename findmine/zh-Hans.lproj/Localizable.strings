@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  findmine
+
+  Created by 凌空 on 2016/11/10.
+  Copyright © 2016年 amoyio. All rights reserved.
+*/
+"Lv." = "等级：";
+"Total" = "地雷数";
+"Remain" = "剩余地雷数";
+"Start" = "开始";
+"You Win" = "你赢了";
+"You Lose" = "你输了";
+"Restart" = "重玩";
+"Cancel" = "取消";
+"Go" = "继续";
+"You Win!!!\n Press \"Go\" Botton To Enter Next Level" = "你赢了!!!\n 点击继续按钮进入下一关";
+"You Lose\n Press Confirm Botton To Restart Game" = "你输了呀，点击重玩按钮再玩一局";

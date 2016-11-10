@@ -45,7 +45,7 @@
  设置通知和基本样式
  */
 -(void)setupBasicComponent{
-    [self.gameStatusBtn setTitle:@"Go" forState:UIControlStateNormal];
+    [self.gameStatusBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
     self.gameStatusBtn.layer.cornerRadius = (NSInteger)self.gameStatusBtn.frame.size.width * 0.5;
     self.timePannel.layer.cornerRadius = 4;
     self.timePannel.layer.masksToBounds = YES;
@@ -101,7 +101,7 @@
  */
 -(void)beginGame{
     self.levelLabel.hidden = NO;
-    self.levelLabel.text = [NSString stringWithFormat:@"Lv.%d",[FMGameManager shareManager].difficultLevel];
+    self.levelLabel.text = [NSString stringWithFormat:@"%@%d",NSLocalizedString(@"Lv.", nil),[FMGameManager shareManager].difficultLevel];
     self.gameStatusBtn.hidden = YES;
     self.firstvalueImgView.hidden = NO;
     self.secondvalueImgView.hidden = NO;
@@ -112,8 +112,8 @@
     }];
     self.totalCountLabel.hidden = NO;
     self.remainCountLabel.hidden = NO;
-    self.totalCountLabel.text = [NSString stringWithFormat:@"Total: %ld",(unsigned long)[FMGameManager shareManager].mineSet.count];
-    self.remainCountLabel.text = [NSString stringWithFormat:@"Remain:  %ld",(unsigned long)[FMGameManager shareManager].mineSet.count];
+    self.totalCountLabel.text = [NSString stringWithFormat:@"%@: %ld",NSLocalizedString(@"Total", nil),(unsigned long)[FMGameManager shareManager].mineSet.count];
+    self.remainCountLabel.text = [NSString stringWithFormat:@"%@:  %ld",NSLocalizedString(@"Remain", nil),(unsigned long)[FMGameManager shareManager].mineSet.count];
     [self addCurrentMapStatus];
 }
 
@@ -155,12 +155,12 @@
     [self.gameTimer invalidate];
     self.gameTimer = nil;
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Lose" message:@"You Lose\n Press Confirm Botton To Restart Game" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"You Lose", nil) message:NSLocalizedString(@"You Lose\n Press Confirm Botton To Restart Game", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Restart", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[FMGameManager shareManager] resetGameTime];
         [self reloadGame];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -181,12 +181,12 @@
     [self.gameTimer invalidate];
     self.gameTimer = nil;
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Win" message:@"You Win!!!\n Press \"Go\" Botton To Enter Next Level" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"You Win", nil) message:NSLocalizedString(@"You Win!!!\n Press \"Go\" Botton To Enter Next Level", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [[FMGameManager shareManager]resetGameTime];
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Go!" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Go", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[FMGameManager shareManager] enterNextLevel];
         [[FMGameManager shareManager] resetGameTime];
         [self reloadGame];
@@ -354,7 +354,6 @@
     }else{
         return (index - 1) / boardWidthCount ;
     }
-    
 }
 
 /**

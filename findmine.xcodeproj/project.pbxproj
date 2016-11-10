@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		34B84E40D987AEAC9DF0DD26 /* libPods-findmine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78FCC1FEE561A36A0C76BCCB /* libPods-findmine.a */; };
+		F223DC8E1DD470830028238C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F223DC901DD470830028238C /* InfoPlist.strings */; };
+		F223DC951DD471CF0028238C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F223DC971DD471CF0028238C /* Localizable.strings */; };
 		F2D7CC9A1DD1B53700783793 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CC991DD1B53700783793 /* main.m */; };
 		F2D7CC9D1DD1B53700783793 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CC9C1DD1B53700783793 /* AppDelegate.m */; };
 		F2D7CCA01DD1B53700783793 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D7CC9F1DD1B53700783793 /* ViewController.m */; };
@@ -23,6 +25,15 @@
 		241C3BA7A614DFF40E91AC2F /* Pods-findmine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmine.release.xcconfig"; path = "Pods/Target Support Files/Pods-findmine/Pods-findmine.release.xcconfig"; sourceTree = "<group>"; };
 		78FCC1FEE561A36A0C76BCCB /* libPods-findmine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-findmine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CFCE1A7B217583F550ED91 /* Pods-findmine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-findmine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-findmine/Pods-findmine.debug.xcconfig"; sourceTree = "<group>"; };
+		F223DC881DD46C420028238C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		F223DC891DD46C420028238C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F223DC8B1DD46D430028238C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		F223DC8F1DD470830028238C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F223DC911DD470850028238C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F223DC921DD470870028238C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F223DC961DD471CF0028238C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F223DC981DD471D10028238C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F223DC991DD471D10028238C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F2A549401DD2FC09000F4148 /* FMButtonInfoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMButtonInfoDelegate.h; sourceTree = "<group>"; };
 		F2D7CC951DD1B53700783793 /* findmine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = findmine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D7CC991DD1B53700783793 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +113,8 @@
 				F2D7CCA61DD1B53700783793 /* LaunchScreen.storyboard */,
 				F2D7CCA91DD1B53700783793 /* Info.plist */,
 				F2D7CC981DD1B53700783793 /* Supporting Files */,
+				F223DC901DD470830028238C /* InfoPlist.strings */,
+				F223DC971DD471CF0028238C /* Localizable.strings */,
 			);
 			path = findmine;
 			sourceTree = "<group>";
@@ -174,6 +187,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = F2D7CC8C1DD1B53700783793;
 			productRefGroup = F2D7CC961DD1B53700783793 /* Products */;
@@ -190,7 +204,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F223DC951DD471CF0028238C /* Localizable.strings in Resources */,
 				F2D7CCA81DD1B53700783793 /* LaunchScreen.storyboard in Resources */,
+				F223DC8E1DD470830028238C /* InfoPlist.strings in Resources */,
 				F2D7CCA51DD1B53700783793 /* Assets.xcassets in Resources */,
 				F2D7CCA31DD1B53700783793 /* Main.storyboard in Resources */,
 			);
@@ -263,10 +279,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F223DC901DD470830028238C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F223DC8F1DD470830028238C /* Base */,
+				F223DC911DD470850028238C /* zh-Hans */,
+				F223DC921DD470870028238C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F223DC971DD471CF0028238C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F223DC961DD471CF0028238C /* Base */,
+				F223DC981DD471D10028238C /* en */,
+				F223DC991DD471D10028238C /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F2D7CCA11DD1B53700783793 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F2D7CCA21DD1B53700783793 /* Base */,
+				F223DC881DD46C420028238C /* zh-Hans */,
+				F223DC8B1DD46D430028238C /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -275,6 +313,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F2D7CCA71DD1B53700783793 /* Base */,
+				F223DC891DD46C420028238C /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -286,6 +325,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -333,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
