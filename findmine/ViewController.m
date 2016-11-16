@@ -72,6 +72,7 @@
     [self addCurrentMapStatus];
 }
 
+
 /**
  扫雷布局
  */
@@ -80,11 +81,18 @@
         [view removeFromSuperview];
     }
     CGFloat cellSizeWidth = ([UIScreen mainScreen].bounds.size.width - 2 * boardLeftMargin - boardSelfMargin * (boardWidthCount - 1)) / boardWidthCount;
+    
+    if ([[[UIDevice currentDevice] model].lowercaseString containsString:@"pad"]) {
+        cellSizeWidth = 0.82 * cellSizeWidth;
+    }
+        
+    CGFloat padBias = ([UIScreen mainScreen].bounds.size.width - cellSizeWidth * boardWidthCount) * 0.5;
     for (int i = 0; i < boardHeightCount; i++) {
         for (int j = 0; j<boardWidthCount; j++) {
-            FMButton *button = [[FMButton alloc]initWithFrame:CGRectMake(boardLeftMargin + j * cellSizeWidth + (j - 1) * boardSelfMargin, boardLeftMargin + i * (cellSizeWidth + boardSelfMargin), cellSizeWidth, cellSizeWidth)];
+            FMButton *button;
+            
+            button = [[FMButton alloc]initWithFrame:CGRectMake(padBias + j * cellSizeWidth + (j - 1) * boardSelfMargin, boardLeftMargin + i * (cellSizeWidth + boardSelfMargin), cellSizeWidth, cellSizeWidth)];
             //避免和没有设置tag的view重叠，所有的tag数加1
-            button.backgroundColor = [UIColor cyanColor];
             button.tag = i * boardWidthCount + j + 1;
             button.userInteractionEnabled = NO;
             [self.pannelView addSubview:button];
